@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>❤️ For Yin Yin Nyein ❤️</title>
+
+<style>
+/* ================= BODY ================= */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #ffdde1, #ee9ca7);
+    overflow-x: hidden;
+}
+
+/* ================= CARD ================= */
+.card {
+    background: pink;
+    padding: 20px;
+    border-radius: 18px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+    text-align: center;
+    max-width: 1000px;
+    margin: 40px auto;
+}
+
+/* ================= PHOTO ================= */
+.photo-container {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 14px;
+    margin-bottom: 20px;
+}
+
+.photo-container img {
+    width: 100%;
+    max-height: 70vh;
+    object-fit: cover;
+    border-radius: 14px;
+}
+
+/* ================= TEXT ================= */
+h1 {
+    color: darkred;
+    margin: 12px 0;
+    font-size: 26px;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: black;
+}
+
+.heart {
+    font-size: 26px;
+    margin-top: 15px;
+}
+
+/* ================= PLAY SONG BUTTON ================= */
+#play-song-btn {
+    background-color: #ff4d6d;
+    color: white;
+    border: none;
+    padding: 12px 26px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: 0.3s;
+    display: none;
+}
+
+#play-song-btn:hover {
+    background-color: #ff1a75;
+}
+
+/* ================= FLOATING HEARTS ================= */
+.floating-heart {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    font-size: 24px;
+    opacity: 0.9;
+    animation: float linear infinite;
+}
+
+@keyframes float {
+    from { transform: translateY(0); }
+    to { transform: translateY(-120px); }
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+    .photo-container img {
+        max-height: 55vh;
+    }
+    h1 { font-size: 22px; }
+    p { font-size: 15px; }
+}
+
+@media (max-width: 480px) {
+    h1 { font-size: 20px; }
+    p { font-size: 14px; }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <!-- SINGLE PHOTO -->
+    <div class="photo-container">
+        <img src="you_n_me.jpg" alt="You and Me">
+    </div>
+
+    <h1>❤️ Happy Birthday Yin Yin Nyein ❤️</h1>
+
+    <p>
+        Happy Birthday ပါ ရာရာလေးရေ... <br> 
+       ဘဝမှာ ရှေ့ဆက်မယ့် ရည်မှန်းချက်တွေအားလုံး အကောင်အထည်ဖော်နိုင်ပြီး၊<br> လိုအင်ဆန္ဒတွေ တစ်လုံးတစ်ဝတည်း ပြည့်ဝပါစေလို့ အလေးအနက် ဆုတောင်းပေးပါတယ်။
+        
+        <br><br>
+        အခုလို ကြိုးစားရုန်းကန်နေရသမျှရဲ့ ရလဒ်ကောင်းတွေကိုလည်း အမြန်ဆုံး မြင်တွေ့ခံစားချင်ပါတယ်။ <br>
+        လူပင်ပန်း၊ စိတ်ပင်ပန်းပြီး အခက်အခဲတွေ ကြုံလာရတဲ့အခါတိုင်းလည်း စိတ်ဓာတ်မကျဘဲ အောင်မြင်စွာ ဖြတ်ကျော်နိုင်ပါစေလို့ ဆုတောင်းပေးပါတယ်။
+        
+        <br><br>
+    
+         
+        လင်းလင်း သီချင်းထဲကလို "မင်းအတွက်ခဏတာဖြစ်ဖြစ်၊ မင်းအတွက်တစ်ဘဝစာဖြစ်ဖြစ်၊ ချွေးသိပ်နားခိုရာ" လေးဖြစ်ချင်ပါတယ်။
+        <br> လိုအပ်လာတဲ့အချိန်တိုင်းလည်း အချိန်မရွေးဖုန်းဆက်နိုင်ပါတယ်။
+        <br>
+        ❤️ I love you! ❤️ 
+    </p>
+
+    <!-- MUSIC -->
+    <button id="play-song-btn">🎵 Play Song</button>
+    <audio id="my-song" src="song.mp3" loop></audio>
+
+    <div class="heart">💖 💖 💖</div>
+</div>
+
+<script>
+/* ================= AUDIO ================= */
+const audio = document.getElementById("my-song");
+
+let unlocked = false;
+
+function unlockAudio() {
+    if (unlocked) return;
+
+    audio.play().then(() => {
+        unlocked = true;
+        removeListeners();
+    }).catch(() => {});
+}
+
+function removeListeners() {
+    document.removeEventListener("touchstart", unlockAudio);
+    document.removeEventListener("pointerdown", unlockAudio);
+    document.removeEventListener("click", unlockAudio);
+}
+
+/* REAL user gestures that browsers allow */
+document.addEventListener("touchstart", unlockAudio, { passive: true });
+document.addEventListener("pointerdown", unlockAudio);
+document.addEventListener("click", unlockAudio);
+
+/* ================= FLOATING HEARTS ================= */
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "floating-heart";
+    heart.textContent = "💖";
+    heart.style.left = Math.random() * window.innerWidth + "px";
+    heart.style.top = window.innerHeight + "px";
+    heart.style.animationDuration = (Math.random() * 4 + 4) + "s";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 8000);
+}
+
+setInterval(createHeart, 1500);
+</script>
+
+
+</body>
+</html>
